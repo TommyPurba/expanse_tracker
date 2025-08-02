@@ -9,11 +9,16 @@ class Expenseitem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      //buat padding agar item agar mempunyai jarak dengan garis card
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 16,
         ),
+        // setelah dibuat card dibuatkan kedalam 1 colum jadi ada struturenya
+        // dari column akan ada title sebagai juduk
+        // kemudian akan dipisahkan lagi tiap row , row kedua ada amoun category dan date
+        // dan di dalam row kdua akan dipisahkan lg amoutn dan (category dan date)
         child: Column(
           children: [
             Text(expense.tittle),
