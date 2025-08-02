@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thefour/expense.dart';
+import 'package:thefour/widgets/expense.dart';
 
 void main(){
   runApp(
