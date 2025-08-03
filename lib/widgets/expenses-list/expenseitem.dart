@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thefour/models/expense.dart';
+import 'package:thefour/widgets/expense.dart';
 
 class Expenseitem extends StatelessWidget {
   const Expenseitem(this.expense, {super.key});
@@ -29,9 +30,9 @@ class Expenseitem extends StatelessWidget {
                 Spacer(),
                 Row(
                   children: [
-                    const Icon(Icons.alarm),
+                    Icon(categoryIcon[expense.category]),
                     const SizedBox(height: 9,),
-                    Text(expense.date.toString())
+                    Text(expense.formattedDate)
                   ],
                 )
                 
