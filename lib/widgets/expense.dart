@@ -21,7 +21,7 @@ class _ExpenseState extends State<Expense>{
       date: DateTime.now(),
       category: Category.work,
       ),
-      Expenses(
+    Expenses(
       tittle: 'Cinema',
       amount: 15.69,
       date: DateTime.now(),
@@ -29,10 +29,23 @@ class _ExpenseState extends State<Expense>{
       )
   ];
 
+  void _openAddExpanseOverlay(){
+    showModalBottomSheet(context: context, builder: (ctx)=>Text('show data'),);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('flutter expense tracker'),
+        actions: [
+          IconButton(
+            onPressed: _openAddExpanseOverlay,
+           icon: Icon(Icons.add)
+           )
+        ],
+      ),
       body: Column(
         children: [
           const Text('the chart'),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thefour/models/expense.dart';
-import 'package:thefour/widgets/expense.dart';
+
 
 class Expenseitem extends StatelessWidget {
   const Expenseitem(this.expense, {super.key});
