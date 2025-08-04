@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thefour/widgets/expenses-list/expenselist.dart';
 import 'package:thefour/models/expense.dart';
+import 'package:thefour/widgets/new_expense.dart';
 
 
 class Expense extends StatefulWidget{
@@ -30,7 +31,7 @@ class _ExpenseState extends State<Expense>{
   ];
 
   void _openAddExpanseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx)=>Text('show data'),);
+    showModalBottomSheet(context: context, builder: (ctx)=>NewExpense(),);
   }
 
 
