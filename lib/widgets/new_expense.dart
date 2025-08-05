@@ -11,10 +11,15 @@ const NewExpense ({super.key});
 }
 
 class _NewExpenseState extends State<NewExpense>{
-  var _enteredTitle = '';
+  
+  final _titleControler = TextEditingController();
+  final _amountControler = TextEditingController();
 
-  void _saveInputTitle(String inputValue){
-    _enteredTitle = inputValue ;
+  @override
+  void dispose() {
+    _titleControler.dispose();
+    _amountControler.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -23,16 +28,29 @@ class _NewExpenseState extends State<NewExpense>{
     child: Column(
       children: [
         TextField(
-          onChanged: _saveInputTitle,
+          controller: _titleControler,
           maxLength: 50,
           decoration: InputDecoration(
             label: Text("Title")
           ),
         ),
+         TextField(
+          controller: _amountControler,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            prefixText: '\$',
+            label: Text("amoun")
+          ),
+        ),
         Row(
           children: [
             ElevatedButton(onPressed: (){
-              print(_enteredTitle);
+             
+            }, 
+            child: Text('cancel')),
+            ElevatedButton(onPressed: (){
+               print(_titleControler.text);
+              print(_amountControler.text);
             }, 
             child: Text('Save Expense'))
           ],
