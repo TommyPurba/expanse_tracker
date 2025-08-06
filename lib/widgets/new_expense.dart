@@ -34,7 +34,27 @@ class _NewExpenseState extends State<NewExpense>{
     final enteredAmount = double.tryParse(_amountControler.text); // trypase('heelo') = null or  trypase(1.22)= 1.22
     final amountIsValid = enteredAmount == null || enteredAmount <0;
     if(_titleControler.text.trim().isEmpty || amountIsValid || _selectedDate == null){
+      showDialog(
+        context: context, 
+        builder: (ctx)=> AlertDialog(
+          title: Text(
+              'Invalid Input'
+              ),
+          content: Text(
+            'Please Make sure a valid Title, amount, Date, and Category Entered.'
+          ),
+          actions: [
+            TextButton(
+              onPressed: (){
+                Navigator.pop(ctx);
+              }, 
+              child: Text('Okay'),
+              ),
+          ],
+            )
+        );
 
+      return;
     }
   }
 
