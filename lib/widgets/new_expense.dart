@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:thefour/models/expense.dart';
 
 final formatter = DateFormat.yMd();
 
@@ -18,6 +19,7 @@ class _NewExpenseState extends State<NewExpense>{
   final _titleControler = TextEditingController();
   final _amountControler = TextEditingController();
   DateTime? _selectedDate;
+  Category _selectedCategory = Category.leisure;
 
   void _presentDate () async {
     final now = DateTime.now();
@@ -75,8 +77,28 @@ class _NewExpenseState extends State<NewExpense>{
             )
           ],
          ),
+        const SizedBox(height: 16,),
         Row(
           children: [
+            DropdownButton(
+              value: _selectedCategory,
+              items: Category.values.map(
+                (category) => DropdownMenuItem(
+                  value: category,
+                  child: Text(
+                    category.name.toUpperCase()
+                    ),
+                  )
+                ).toList(), 
+              onChanged: (value){
+                if(value == null){
+                  return;
+                }
+                setState(() {
+                  _selectedCategory = value;
+                });
+              }),
+            const Spacer(),
             ElevatedButton(onPressed: (){
              Navigator.pop(context);
             }, 
