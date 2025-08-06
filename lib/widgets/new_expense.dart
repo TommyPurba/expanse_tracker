@@ -5,7 +5,9 @@ import 'package:thefour/models/expense.dart';
 final formatter = DateFormat.yMd();
 
 class NewExpense extends StatefulWidget {
-const NewExpense ({super.key});
+const NewExpense ({super.key, required this.onaddexpense});
+
+final void Function(Expenses expense) onaddexpense;
 
 @override
   State<NewExpense> createState() {
@@ -56,6 +58,7 @@ class _NewExpenseState extends State<NewExpense>{
 
       return;
     }
+    widget.onaddexpense(Expenses(tittle: _titleControler.text, amount: enteredAmount, date: _selectedDate!, category: _selectedCategory));
   }
 
   @override
