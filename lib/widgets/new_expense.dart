@@ -30,6 +30,14 @@ class _NewExpenseState extends State<NewExpense>{
     });
   }
 
+  void _submitExpenseDate(){
+    final enteredAmount = double.tryParse(_amountControler.text); // trypase('heelo') = null or  trypase(1.22)= 1.22
+    final amountIsValid = enteredAmount == null || enteredAmount <0;
+    if(_titleControler.text.trim().isEmpty || amountIsValid || _selectedDate == null){
+
+    }
+  }
+
   @override
   void dispose() {
     _titleControler.dispose();
@@ -103,10 +111,8 @@ class _NewExpenseState extends State<NewExpense>{
              Navigator.pop(context);
             }, 
             child: Text('cancel')),
-            ElevatedButton(onPressed: (){
-               print(_titleControler.text);
-              print(_amountControler.text);
-            }, 
+            ElevatedButton(
+              onPressed: _submitExpenseDate, 
             child: Text('Save Expense'))
           ],
         ),
