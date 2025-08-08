@@ -12,6 +12,25 @@ void main(){
         appBarTheme: AppBarTheme().copyWith(
           backgroundColor: kColourScheem.onPrimaryContainer,
           foregroundColor: kColourScheem.primaryContainer,
+        ),
+        cardTheme: CardTheme().copyWith(
+          color: kColourScheem.secondaryContainer,
+          margin: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kColourScheem.primaryContainer,
+          )
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.normal,
+            color: kColourScheem.onSecondaryContainer,
+            fontSize: 14,
+          )
         )
       ),
       home: Expense(),
