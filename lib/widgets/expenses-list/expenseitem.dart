@@ -21,8 +21,12 @@ class Expenseitem extends StatelessWidget {
         // kemudian akan dipisahkan lagi tiap row , row kedua ada amoun category dan date
         // dan di dalam row kdua akan dipisahkan lg amoutn dan (category dan date)
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.tittle),
+            Text(
+              expense.tittle,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 4,),
             Row(
               children: [
