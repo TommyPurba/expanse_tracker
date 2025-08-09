@@ -35,7 +35,7 @@ class Expenseitem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(categoryIcon[expense.category]),
-                    const SizedBox(height: 9,),
+                    const SizedBox(width: 9,),
                     Text(expense.formattedDate)
                   ],
                 )
