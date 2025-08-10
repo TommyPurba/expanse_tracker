@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:thefour/widgets/expense.dart';
 
 var kColourScheem = ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
@@ -7,8 +8,17 @@ var kDarkColourSccheem = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 9, 99, 125),
   );
 
+
+// ini cara agar ketika mode landscape tampilan apk masih tetap protait
 void main(){
-  runApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ]
+  ).then(
+    (fn) {
+       runApp(
     MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: kDarkColourSccheem,
@@ -55,4 +65,7 @@ void main(){
       home: Expense(),
     )
   );
+    }
+  );
+ 
 }
