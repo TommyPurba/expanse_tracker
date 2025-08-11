@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
  import 'package:intl/intl.dart';
  import 'package:thefour/models/expense.dart';
@@ -48,6 +51,44 @@ import 'package:flutter/material.dart';
      });
    }
 
+   void _showDialog(){
+    if(Platform.isIOS){
+      showCupertinoDialog(
+        context: context, builder: (ctx)=> CupertinoAlertDialog(
+           title: const Text('Invalid Input'),
+           content: const Text(
+               'Please make sure a valid title, amount, date, and category was entered.'),
+           actions: [
+             TextButton(
+               onPressed: () {
+                 Navigator.pop(ctx); // Tutup dialog.
+               },
+               child: const Text('Okay'),
+             ),
+           ],
+        )
+      );
+    }
+    else {
+      showDialog(
+               context: context,
+               builder: (ctx) => AlertDialog(
+                 title: const Text('Invalid Input'),
+                 content: const Text(
+                     'Please make sure a valid title, amount, date, and category was entered.'),
+                 actions: [
+                   TextButton(
+                     onPressed: () {
+                       Navigator.pop(ctx); // Tutup dialog.
+                     },
+                     child: const Text('Okay'),
+                   ),
+                 ],
+               ),
+             );
+    }
+   }
+
    // FUNGSI: Memvalidasi dan menyimpan data pengeluaran baru.
    void _submitExpenseDate() {
      // INFO: Mengubah input jumlah (string) menjadi angka (double).
@@ -61,22 +102,7 @@ import 'package:flutter/material.dart';
      // INFO: Blok validasi utama.
      // Jika judul kosong, jumlah tidak valid, atau tanggal belum dipilih, tampilkan dialog error.
      if (_titleControler.text.trim().isEmpty || amountIsInvalid || _selectedDate == null) {
-       showDialog(
-         context: context,
-         builder: (ctx) => AlertDialog(
-           title: const Text('Invalid Input'),
-           content: const Text(
-               'Please make sure a valid title, amount, date, and category was entered.'),
-           actions: [
-             TextButton(
-               onPressed: () {
-                 Navigator.pop(ctx); // Tutup dialog.
-               },
-               child: const Text('Okay'),
-             ),
-           ],
-         ),
-       );
+       _showDialog;
        return; // Hentikan eksekusi fungsi jika ada data yang tidak valid.
      }
 
